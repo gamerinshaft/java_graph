@@ -11,22 +11,17 @@ public class BarGraph extends Applet {
    }
 
   public void paint(Graphics g) {
-     int i;
-     g.setColor(new Color(0,0,0));
-     g.drawLine(50,250,350,250);
-     g.drawLine(50,250,50,50);
-     for(i=0;i<13;i++){
-       g.drawLine(50+i*25,250,50+i*25,252);
-     }
-     for(i=0;i<5;i++){
-       g.drawLine(48,50+i*50,50,50+i*50);
-       g.drawString(i*50+"",5,250-i*50);
-     }
-     for(i=0;i<12;i++){
-       g.setColor(new Color(0,0,0));
-       g.drawString(i+1+"",57+i*25,263);
-       g.setColor(new Color(0,0,255));
-       g.fillRect(53+i*25+5,250-pa[i],10,pa[i]);
+     int i,j;
+     g.setColor(new Color(255,255,255));
+     // 外の四角
+     g.drawRect(15,15,400,250);
+     for(i=0;i<8;i++){
+        g.setColor(new Color(50,50,50));
+        g.fillRect(15+16+16*i+32*i,25,32,210);
+        for(j=0;j<3;j++){
+          g.setColor(new Color(25,25,25));
+          g.drawLine(15+16+16*i+32*i,25+54+52*j,15+16+16*i+32*(i+1),25+54+52*j);
+        }
      }
 
   }
