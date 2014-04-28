@@ -17,7 +17,8 @@ public class BarGraph extends Applet {
      g.drawRect(15,15,400,250);
      for(i=0;i<8;i++){
         g.setColor(new Color(50,50,50));
-        g.fillRect(15+16+16*i+32*i,25,32,210);
+        g.fillOval(15+16+16*i+32*i-1,25,33,33);
+        g.fillRect(15+16+16*i+32*i,25+20,32,210);
         for(j=0;j<3;j++){
           g.setColor(new Color(25,25,25));
           g.drawLine(15+16+16*i+32*i,25+54+52*j,15+16+16*i+32*(i+1),25+54+52*j);
