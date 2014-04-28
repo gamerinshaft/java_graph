@@ -19,11 +19,11 @@ public class BarGraph extends Applet {
         g.setColor(new Color(50,50,50));
         g.fillOval(15+16+16*i+32*i-1,25,33,30);
         g.fillRect(15+16+16*i+32*i,25+15,32,195);
+        g.fillOval(15+32+48*i-5-1,15+10+210+5,10,10);
         for(j=0;j<3;j++){
           g.setColor(new Color(25,25,25));
           g.drawLine(15+16+16*i+32*i,25+52+52*j,15+16+16*i+32*(i+1),25+52+52*j);
         }
      }
-
   }
 }
