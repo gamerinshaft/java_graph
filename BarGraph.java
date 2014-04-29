@@ -47,9 +47,9 @@ public class BarGraph extends Applet {
         }else if(grad < 400){
           g.setColor(new Color(50,150,150+grad/4));
         }else if(grad < 500){
-          g.setColor(new Color(50,150+grad/5,250));
+          g.setColor(new Color(50,50,150+grad/5));
         }else{
-          g.setColor(new Color(50,50,150+grad/6));
+          g.setColor(new Color(50,150+grad/6,250));
         }
         g.fillOval(15+32+48*i-5-1,15+10+210+5-2,10,10);
         //ゲージ表示
@@ -66,6 +66,12 @@ public class BarGraph extends Applet {
         for(j=0;j<3;j++){
           g.setColor(new Color(25,25,25));
           g.drawLine(15+16+16*i+32*i,25+52+52*j,15+16+16*i+32*(i+1),25+52+52*j);
+        }
+        g.setColor(new Color(255,220,220));
+        if((int)(parcent)==100){
+          g.drawString((int)(parcent)+"%",15+16+16*i+32*i-1,25+195-(int)(195*parcent/100)+20);
+        }else{
+          g.drawString((int)(parcent)+"%",15+16+16*i+32*i-1+6,25+195-(int)(195*parcent/100)+20);
         }
      }
   }
