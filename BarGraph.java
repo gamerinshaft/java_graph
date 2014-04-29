@@ -2,7 +2,7 @@ import java.applet.Applet;
 import java.awt.*;
 
 public class BarGraph extends Applet {
-  float pa[]=new float[12];
+  float pa[]=new float[8];
   float max = 0;
   public void init() {
      setBackground(new Color(25,25,25));
@@ -19,7 +19,6 @@ public class BarGraph extends Applet {
    }
 
   public void paint(Graphics g) {
-    g.drawString(max+"",15,15);
     int i,j;
     Graphics2D g2 = (Graphics2D)g;
     g.setColor(new Color(255,255,255));
