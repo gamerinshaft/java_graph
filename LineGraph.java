@@ -38,7 +38,10 @@ public class LineGraph extends Applet {
     //0の表示
     g.drawString("0",15+10+15,250-15);
     g.fillOval(15+40,250-20,10,10);
-
+    //横丸ぽちの追加
+    for(i=0;i<8;i++){
+      g.fillOval((int)(15+40+345*i/7),250-20,10,10);
+    }
   }
 
 }
