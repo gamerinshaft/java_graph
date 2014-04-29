@@ -33,5 +33,7 @@ public class LineGraph extends Applet {
     for(i=0;i<4;i++){
       g.drawString((int)(max*(4-i)/4)+"",15+10,15+15+5+51*i);
     }
+    //0の表示
+      g.drawString("0",15+10+15,250-15);
   }
 }
