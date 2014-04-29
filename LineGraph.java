@@ -30,6 +30,8 @@ public class LineGraph extends Applet {
     //横線
     g.drawLine(15+45,250-15,400,250-15);
     //縦線数値の記入
-    g.drawString((int)(max)+"",15+10,15+15+5);
+    for(i=0;i<4;i++){
+      g.drawString((int)(max*(4-i)/4)+"",15+10,15+15+5+51*i);
+    }
   }
 }
