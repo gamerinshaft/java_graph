@@ -6,7 +6,7 @@ public class LineGraph extends Applet {
   float max = 0;
   public void init() {
      setBackground(new Color(25,25,25));
-     pa[0]=100;pa[1]=640;pa[2]=340;pa[3]=412;pa[4]=560;pa[5]=109;
+     pa[0]=800;pa[1]=640;pa[2]=340;pa[3]=412;pa[4]=560;pa[5]=109;
      pa[6]=800;pa[7]=250;
      //値の比較
      int i;
@@ -48,8 +48,9 @@ public class LineGraph extends Applet {
       g.fillOval((int)(15+40+335*i/7),250-20,10,10);
     }
     //折れ線グラフのデータ記入
+    g.setColor(new Color(255,255,255));
     for(i=0;i<8;i++){
-
+      g.fillOval((int)(15+40+335*i/7),250-20-(int)(205*pa[i]/max),10,10);
     }
   }
 
