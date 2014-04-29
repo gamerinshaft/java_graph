@@ -32,17 +32,24 @@ public class PieGraph extends Applet {
     g.fillOval(15+100, 15+25, 200, 200);
     g.setColor(new Color(35,35,35));
     g.fillOval(15+120, 15+45, 160, 160);
+    int i;
+    for(i=3;i>=0;i--){
+      g.setColor(new Color(35,35,35));
+      g.fillOval(15+120+(15-5*i),15+45+(15-5*i), 160-(30-10*i), 160-(30-10*i));
+      g.setColor(new Color(35+40*i,235,235));
+      g.fillArc(15+120+(15-5*i),15+45+(15-5*i), 160-(30-10*i), 160-(30-10*i), 90,Math.round(360*pa[i]/max));
+    }
     g.setColor(new Color(50,50,50));
     g.fillOval(15+140, 15+65, 120, 120);
     //メーター
-    int i;
+    int j;
     int arc1 = 90;
     int length;
-    for(i=0;i<8;i++){
-      length = Math.round(360*pa[i]/sum);
-      g.setColor(new Color(0+i*10,0+i*15,0+i*35));
-      g.drawString(sum+"",15+40,30+15*i);
-      g.drawString(length+"",15+15,30+15*i);
+    for(j=0;j<8;j++){
+      length = Math.round(360*pa[j]/sum);
+      g.setColor(new Color(0+j*10,0+j*15,0+j*35));
+      g.drawString(sum+"",15+40,30+15*j);
+      g.drawString(length+"",15+15,30+15*j);
       g.fillArc(15+140, 15+65, 120, 120, arc1, length);
       arc1 += length;
     }
