@@ -19,28 +19,37 @@ public class LineGraph extends Applet {
    }
 
   public void paint(Graphics g) {
-    g.drawString(max+"",15,15);
     int i,j;
     Graphics2D g2 = (Graphics2D)g;
     g.setColor(new Color(255,255,255));
+     //0の表示
+    g.drawString("0",15+10+15,250-15);
     // 外の枠
     g.drawRect(15,15,400,250);
+    g.setColor(new Color(50,50,50));
     //縦線
     g.drawLine(15+45,15+15,15+45,250-15);
     //横線
-    g.drawLine(15+45,250-15,400,250-15);
+    g.drawLine(15+45,250-15,390,250-15);
     //縦線数値の記入
     //縦丸ぽちの追加
-    for(i=0;i<4;i++){
+   for(i=0;i<4;i++){
+      g.setColor(new Color(255,255,255));
       g.drawString((int)(max*(4-i)/4)+"",15+10,15+15+5+51*i);
+      g.setColor(new Color(50,50,50));
       g.fillOval(15+40,15+10+51*i,10,10);
     }
-    //0の表示
-    g.drawString("0",15+10+15,250-15);
-    g.fillOval(15+40,250-20,10,10);
+    //横線数値記入
     //横丸ぽちの追加
     for(i=0;i<8;i++){
-      g.fillOval((int)(15+40+345*i/7),250-20,10,10);
+      g.setColor(new Color(255,255,255));
+      g.drawString(i+"",(int)(15+40+335*i/7)+1,250+7);
+      g.setColor(new Color(50,50,50));
+      g.fillOval((int)(15+40+335*i/7),250-20,10,10);
+    }
+    //折れ線グラフのデータ記入
+    for(i=0;i<8;i++){
+
     }
   }
 
