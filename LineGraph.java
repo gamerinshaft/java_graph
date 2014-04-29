@@ -25,6 +25,11 @@ public class LineGraph extends Applet {
     g.setColor(new Color(255,255,255));
     // 外の枠
     g.drawRect(15,15,400,250);
-
+    //縦線
+    g.drawLine(15+45,15+15,15+45,250-15);
+    //横線
+    g.drawLine(15+45,250-15,400,250-15);
+    //縦線数値の記入
+    g.drawString((int)(max)+"",15+10,15+15+5);
   }
 }
