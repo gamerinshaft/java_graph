@@ -37,6 +37,7 @@ public class LineGraph extends Applet {
     }
     //0の表示
     g.drawString("0",15+10+15,250-15);
+    g.fillOval(15+40,250-20,10,10);
 
   }
 
