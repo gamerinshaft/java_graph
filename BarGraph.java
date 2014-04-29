@@ -2,12 +2,12 @@ import java.applet.Applet;
 import java.awt.*;
 
 public class BarGraph extends Applet {
-  int pa[]=new int[12];
-  int max = 0;
+  float pa[]=new float[12];
+  float max = 0;
   public void init() {
      setBackground(new Color(25,25,25));
      pa[0]=180;pa[1]=120;pa[2]=283;pa[3]=112;pa[4]=190;pa[5]=109;
-     pa[6]=200;pa[7]=130;
+     pa[6]=200;pa[7]=400;
      //値の比較
      int i;
      for(i=0;i<pa.length;i++){
@@ -39,10 +39,20 @@ public class BarGraph extends Applet {
         g.fillOval(15+16+16*i+32*i-1,25,33,30);
         //ゲージ本体
         g.fillRect(15+16+16*i+32*i,25+15,32,195);
-        //丸ぽち
-        g.fillOval(15+32+48*i-5-1,15+10+210+5-2,10,10);
+        //数値表示
         g.setColor(new Color(255,255,255));
-        g.drawString(pa[i] + "",15+32+48*i-5-1-7,15+10+210+27);
+        g.drawString((int)pa[i] + "",15+32+48*i-5-1-7,15+10+210+27);
+        //丸ぽち
+        int grad;
+        grad = (int)(pa[i]*600/max);
+        if(grad < 200){
+          g.setColor(new Color(50+grad,50,50));
+        }else if(grad < 400){
+          g.setColor(new Color(50,50+grad/2,50));
+        }else{
+          g.setColor(new Color(50,50,50+grad/3));
+        }
+        g.fillOval(15+32+48*i-5-1,15+10+210+5-2,10,10);
         //ゲージ内の横線
         for(j=0;j<3;j++){
           g.setColor(new Color(25,25,25));
