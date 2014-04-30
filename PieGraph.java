@@ -28,12 +28,29 @@ public class PieGraph extends Applet {
     g.fillOval(15+80-1, 15+5-1, 242, 242);
     g.setColor(new Color(35,35,35));
     g.fillOval(15+80, 15+5, 240, 240);
+
+    //パーセンテージの表示
+
     g.setColor(new Color(255,0,0));
-    g.fillOval(15+80, 15+5, 240, 240);
+    g.fillArc(15+80,15+5,240,240,90,360);
+    g.setColor(new Color(255,128,0));
+    g.fillArc(15+80,15+5,240,240,90,315);
+    g.setColor(new Color(255,255,0));
+    g.fillArc(15+80,15+5,240,240,90,270);
+    g.setColor(new Color(0,255,0));
+    g.fillArc(15+80,15+5,240,240,90,225);
+    g.setColor(new Color(0,255,255));
+    g.fillArc(15+80,15+5,240,240,90,180);
+    g.setColor(new Color(00,128,255));
+    g.fillArc(15+80,15+5,240,240,90,135);
+    g.setColor(new Color(0,0,255));
+    g.fillArc(15+80,15+5,240,240,90,90);
+    g.setColor(new Color(0,0,128));
+    g.fillArc(15+80,15+5,240,240,90,45);
 
     g.setColor(new Color(35,35,35));
     g.fillOval(15+80+10,15+5+10,220,220);
-    g.setColor(new Color(180,0,0));
+    g.setColor(new Color(220,0,0));
     g.fillArc(15+80+10,15+5+10,220,220,90,Math.round(360*pa[7]/max));
 
     g.setColor(new Color(50,50,50));
@@ -73,7 +90,7 @@ public class PieGraph extends Applet {
     g.setColor(new Color(50,50,50));
     g.fillOval(15+180, 15+105, 40, 40);
     //円縦線
-    g.setColor(Color.RED);
+    g.setColor(Color.WHITE);
     g.fillRect(15+200-1,15+5,3,120);
     g.setColor(Color.ORANGE);
     g.drawLine(15+200,15+5+5,15+200,120+20);
