@@ -55,6 +55,8 @@ public class PieGraph extends Applet {
     g.fillOval(15+80+10,15+5+10,220,220);
     g.setColor(new Color(190,0,0));
     g.fillArc(15+80+10,15+5+10,220,220,90,Math.round(360*pa[7]/max));
+    g.drawString(7+"",15+15+325,45+20+15*7);
+    g.drawString((int)(100*pa[7]/max)+"%",15+35+325,45+20+15*7);
 
     g.setColor(new Color(50,50,50));
     g.fillOval(15+100, 15+25, 200, 200);
