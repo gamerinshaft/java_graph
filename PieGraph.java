@@ -62,7 +62,7 @@ public class PieGraph extends Applet {
     int length;
     for(j=0;j<8;j++){
       length = Math.round(360*pa[j]/sum);
-      g.setColor(new Color(0+j*10,0+j*15,0+j*35));
+      g.setColor(new Color(0+j*10,0+j*15,80+j*25));
       g.drawString(sum+"",15+40,30+15*j);
       g.drawString(length+"",15+15,30+15*j);
       g.fillArc(15+140, 15+65, 120, 120, arc1, length);
