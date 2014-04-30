@@ -23,6 +23,10 @@ public class PieGraph extends Applet {
     // 外の枠
     g.setColor(new Color(255,255,255));
     g.drawRect(15,15,400,250);
+    //　中の両サイドの枠
+    g.setColor(new Color(50,50,50));
+    g.fillRect(15+1,15+1,75-1,250-2);
+    g.fillRect(325+15+1,15+1,75-1,250-2);
 
     g.setColor(new Color(50,50,50));
     g.fillOval(15+80-1, 15+5-1, 242, 242);
@@ -50,7 +54,7 @@ public class PieGraph extends Applet {
 
     g.setColor(new Color(35,35,35));
     g.fillOval(15+80+10,15+5+10,220,220);
-    g.setColor(new Color(220,0,0));
+    g.setColor(new Color(190,0,0));
     g.fillArc(15+80+10,15+5+10,220,220,90,Math.round(360*pa[7]/max));
 
     g.setColor(new Color(50,50,50));
