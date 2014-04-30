@@ -7,8 +7,8 @@ public class PieGraph extends Applet {
   float sum = 0;
   public void init() {
      setBackground(new Color(25,25,25));
-     pa[0]=20;pa[1]=40;pa[2]=20;pa[3]=80;pa[4]=60;pa[5]=100;
-     pa[6]=40;pa[7]=50;
+     pa[0]=90;pa[1]=40;pa[2]=100;pa[3]=80;pa[4]=60;pa[5]=120;
+     pa[6]=40;pa[7]=80;
      //値の比較
      int i;
      for(i=0;i<8;i++){
@@ -28,15 +28,30 @@ public class PieGraph extends Applet {
     g.fillOval(15+80-1, 15+5-1, 242, 242);
     g.setColor(new Color(35,35,35));
     g.fillOval(15+80, 15+5, 240, 240);
+    g.setColor(new Color(255,0,0));
+    g.fillOval(15+80, 15+5, 240, 240);
+
+    g.setColor(new Color(35,35,35));
+    g.fillOval(15+80+10,15+5+10,220,220);
+    g.setColor(new Color(180,0,0));
+    g.fillArc(15+80+10,15+5+10,220,220,90,Math.round(360*pa[7]/max));
+
     g.setColor(new Color(50,50,50));
     g.fillOval(15+100, 15+25, 200, 200);
+    int k;
+    for(k=6;k>=4;k--){
+      g.setColor(new Color(50,50,50));
+      g.fillOval(15+100+(42-7*k),15+25+(42-7*k), 200-(84-14*k), 200-(84-14*k));
+      g.setColor(new Color(255,250-50*(2-(6-k)),0));
+      g.fillArc(15+100+(42-7*k),15+25+(42-7*k), 200-(84-14*k), 200-(84-14*k), 90,Math.round(360*pa[k]/max));
+    }
     g.setColor(new Color(35,35,35));
     g.fillOval(15+120, 15+45, 160, 160);
     int i;
     for(i=3;i>=0;i--){
       g.setColor(new Color(35,35,35));
       g.fillOval(15+120+(15-5*i),15+45+(15-5*i), 160-(30-10*i), 160-(30-10*i));
-      g.setColor(new Color(35+40*i,235,235));
+      g.setColor(new Color(0,250-50*(3-i),100+50*(3-i)));
       g.fillArc(15+120+(15-5*i),15+45+(15-5*i), 160-(30-10*i), 160-(30-10*i), 90,Math.round(360*pa[i]/max));
     }
     g.setColor(new Color(50,50,50));
@@ -58,7 +73,9 @@ public class PieGraph extends Applet {
     g.setColor(new Color(50,50,50));
     g.fillOval(15+180, 15+105, 40, 40);
     //円縦線
-    g.setColor(new Color(200,200,200));
+    g.setColor(Color.RED);
     g.fillRect(15+200-1,15+5,3,120);
+    g.setColor(Color.ORANGE);
+    g.drawLine(15+200,15+5+5,15+200,120+20);
   }
 }
