@@ -33,8 +33,7 @@ public class PieGraph extends Applet {
     g.setColor(new Color(35,35,35));
     g.fillOval(15+80, 15+5, 240, 240);
 
-    //パーセンテージの表示
-
+    //一番外枠パーセンテージの表示
     g.setColor(new Color(255,0,0));
     g.fillArc(15+80,15+5,240,240,90,360);
     g.setColor(new Color(255,128,0));
@@ -65,6 +64,8 @@ public class PieGraph extends Applet {
       g.fillOval(15+100+(42-7*k),15+25+(42-7*k), 200-(84-14*k), 200-(84-14*k));
       g.setColor(new Color(255,250-50*(2-(6-k)),0));
       g.fillArc(15+100+(42-7*k),15+25+(42-7*k), 200-(84-14*k), 200-(84-14*k), 90,Math.round(360*pa[k]/max));
+      g.drawString(k+"",15+15+325,45+20+15*k);
+      g.drawString((int)(100*pa[k]/max)+"%",15+35+325,45+20+15*k);
     }
     g.setColor(new Color(35,35,35));
     g.fillOval(15+120, 15+45, 160, 160);
@@ -74,6 +75,8 @@ public class PieGraph extends Applet {
       g.fillOval(15+120+(15-5*i),15+45+(15-5*i), 160-(30-10*i), 160-(30-10*i));
       g.setColor(new Color(0,250-50*(3-i),100+50*(3-i)));
       g.fillArc(15+120+(15-5*i),15+45+(15-5*i), 160-(30-10*i), 160-(30-10*i), 90,Math.round(360*pa[i]/max));
+      g.drawString(i+"",15+15+325,45+20+15*i);
+      g.drawString((int)(100*pa[i]/max)+"%",15+35+325,45+20+15*i);
     }
     g.setColor(new Color(50,50,50));
     g.fillOval(15+140, 15+65, 120, 120);
@@ -81,11 +84,26 @@ public class PieGraph extends Applet {
     int j;
     int arc1 = 90;
     int length;
+    //文面の記述
+    g.setColor(new Color(255,255,255));
+    g.drawString("各要素の",15+12,30);
+    g.drawString("数値一覧表",15+5,30+15);
+    g.drawString("最大値に",15+12+325,30);
+    g.drawString("対する比率",15+5+325,30+15);
+
     for(j=0;j<8;j++){
       length = Math.round(360*pa[j]/sum);
-      g.setColor(new Color(0+j*10,0+j*15,80+j*25));
-      g.drawString(sum+"",15+40,30+15*j);
-      g.drawString(length+"",15+15,30+15*j);
+      if(j<=1){
+        g.setColor(new Color(255,127*j,0));
+      }else if(j<=3){
+        g.setColor(new Color(255-127*(j-2),255,0));
+      }else if(j<=5){
+        g.setColor(new Color(0,255-127*(j-4),127*(j-4)));
+      }else{
+        g.setColor(new Color(0,255-127*(j-5),255));
+      }
+      g.drawString(j+"",15+15,45+20+15*j);
+      g.drawString((int)(pa[j])+"",15+35,45+20+15*j);
       g.fillArc(15+140, 15+65, 120, 120, arc1, length);
       arc1 += length;
     }
