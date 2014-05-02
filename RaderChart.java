@@ -2,15 +2,17 @@ import java.applet.Applet;
 import java.awt.*;
 
 public class RaderChart extends Applet {
-  float pa[]=new float[180];
+  float pa[]=new float[12];
   float max = 0;
   float sum = 0;
   public void init() {
     setBackground(new Color(25,25,25));
-    pa[0]=90;pa[1]=40;pa[2]=100;pa[3]=80;pa[4]=60;pa[5]=120;
+    pa[0]=90;pa[1]=40;pa[2]=100;pa[3]=80;pa[4]=60;
+    pa[5]=120;pa[6]=190;pa[7]=120;pa[8]=130;pa[9]=80;
+    pa[10]=120;pa[11]=20;
     //値の比較
     int i;
-    for(i=0;i<6;i++){
+    for(i=0;i<pa.length;i++){
         sum += pa[i];
         if(max<=pa[i]){
           max = pa[i];
@@ -29,9 +31,12 @@ public class RaderChart extends Applet {
     for(i=0;i<pa.length;i++){
       int x1[] = new int[4];
       int y1[] = new int[4];
+      int z_x = (int)(-(110*Math.cos(90*Math.PI/180+rad*i)));
+      int z_y = (int)(110*Math.sin(90*Math.PI/180+rad*i));
+      g.drawString(i+1+"",208+z_x,145-z_y);
       int k;
       for(k=0;k<4;k++){
-        x1[k]= (int)((100-25*k)*Math.cos(90*Math.PI/180+rad*i));
+        x1[k]= (int)(-((100-25*k)*Math.cos(90*Math.PI/180+rad*i)));
         y1[k]= (int)((100-25*k)*Math.sin(90*Math.PI/180+rad*i));
       }
       g.drawLine(215,140,215+x1[0],140-y1[0]);
@@ -40,7 +45,7 @@ public class RaderChart extends Applet {
         int y2[] = new int[4];
         int j;
         for(j=0;j<4;j++){
-          x2[j]= (int)((100-25*j)*Math.cos(90*Math.PI/180+rad*(i+1)));
+          x2[j]= (int)(-((100-25*j)*Math.cos(90*Math.PI/180+rad*(i+1))));
           y2[j]= (int)((100-25*j)*Math.sin(90*Math.PI/180+rad*(i+1)));
           g.drawLine(215+x2[j],140-y2[j],215+x1[j],140-y1[j]);
         }
