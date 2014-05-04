@@ -11,12 +11,12 @@ public class RaderChart extends Applet {
   float percent_second[] = new float[pa.length];
   public void init() {
     setBackground(new Color(25,25,25));
-    pa[0]=90;pa[1]=40;pa[2]=100;pa[3]=80;pa[4]=60;
-    pa[5]=120;pa[6]=190;pa[7]=120;pa[8]=130;pa[9]=80;
+    pa[0]=90;pa[1]=140;pa[2]=100;pa[3]=80;pa[4]=160;
+    pa[5]=120;pa[6]=190;pa[7]=120;pa[8]=130;pa[9]=180;
     pa[10]=120;pa[11]=150;
-    pa_second[0]=40;pa_second[1]=40;pa_second[2]=40;pa_second[3]=40;pa_second[4]=40;
-    pa_second[5]=40;pa_second[6]=40;pa_second[7]=40;pa_second[8]=40;pa_second[9]=40;
-    pa_second[10]=40;pa_second[11]=40;
+    pa_second[0]=30;pa_second[1]=40;pa_second[2]=60;pa_second[3]=50;pa_second[4]=40;
+    pa_second[5]=80;pa_second[6]=40;pa_second[7]=40;pa_second[8]=70;pa_second[9]=90;
+    pa_second[10]=50;pa_second[11]=80;
     int i;
     //値の比較
     for(i=0;i<pa.length;i++){
@@ -47,16 +47,32 @@ public class RaderChart extends Applet {
     // 外の枠
     g.setColor(new Color(255,255,255));
     g.drawRect(15,15,400,250);
+    //　中の両サイドの枠
+    g.setColor(new Color(50,50,50));
+    g.fillRect(15+1,15+1,75-1,250-2);
+    g.fillRect(325+15+1,15+1,75-1,250-2);
+    //文面の記述
+    g.setColor(new Color(255,255,255));
+    g.drawString("入力した",15+12,30);
+    g.drawString("値の一覧表",15+5,30+15);
+    g.drawString("各要素の",15+12+325,30);
+    g.drawString("標準的な値",15+5+325,30+15);
     // レーダー枠
     double rad = (360/pa.length)*(Math.PI/180);
     int i;
     for(i=0;i<pa.length;i++){
       g.setColor(new Color(255,255,255));
+      //両サイドの値
+      g.drawString(i+"",15+15+325,45+20+15*i);
+      g.drawString((int)(pa_second[i])+"",15+45+325,45+20+15*i);
+      g.drawString(i+"",15+15,45+20+15*i);
+      g.drawString((int)(pa[i])+"",15+35,45+20+15*i);
+
       int x1[] = new int[4];
       int y1[] = new int[4];
 
       //円の周りの値
-      g.setColor(new Color(166,2,17));
+      g.setColor(new Color(255,255,255));
       int z_x = (int)(-(110*Math.cos(90*Math.PI/180+rad*i)));
       int z_y = (int)(110*Math.sin(90*Math.PI/180+rad*i));
       g.drawString(i+1+"",208+z_x,145-z_y);
@@ -69,11 +85,6 @@ public class RaderChart extends Applet {
       int point_y1_second = (int)(percent_second[i]*Math.sin(90*Math.PI/180+rad*i));
 
 
-      //丸ぽち
-      g.setColor(new Color(214,0,0));
-      g.fillOval(211+point_x1,136-point_y1,8,8);
-      g.setColor(new Color(250,150,65));
-      g.fillOval(211+point_x1_second,136-point_y1_second,8,8);
 
       g.setColor(new Color(255,255,255));
       int k;
@@ -84,6 +95,8 @@ public class RaderChart extends Applet {
       //棒線
       g.setColor(new Color(255,255,255));
       g.drawLine(215,140,215+x1[0],140-y1[0]);
+
+
 
       //レーダーの点と点とをつなぐ線
       if(i+1<pa.length){
@@ -97,7 +110,7 @@ public class RaderChart extends Applet {
         //値同士の線
         g.setColor(new Color(0,150,50));
         g.drawLine(215+point_x1,140-point_y1,215+point_x2,140-point_y2);
-        g.setColor(new Color(250,150,65));
+        g.setColor(new Color(250,250,0));
         g.drawLine(215+point_x1_second,140-point_y1_second,215+point_x2_second,140-point_y2_second);
 
         g.setColor(new Color(255,255,255));
@@ -113,10 +126,11 @@ public class RaderChart extends Applet {
         int npoints = xpoints.length;
         Polygon polygon = new Polygon(xpoints, ypoints, npoints);
         Polygon polygon_second = new Polygon(xpoints_second, ypoints_second, npoints);
-        GradientPaint gp = new GradientPaint(215+(point_x1+point_x2)/2,140-(point_y1+point_y2)/2,new Color(100,160,0,100),215,140,new Color(220,220,120));
+        GradientPaint gp = new GradientPaint(215+(point_x1+point_x2)/2,140-(point_y1+point_y2)/2,new Color(0,120,0,220),215,140,new Color(220,220,0,200));
         g2.setPaint(gp);
         g2.fill(polygon);
-        g.setColor(new Color(250,150,65,100));
+        GradientPaint gp2 = new GradientPaint(215+(point_x1+point_x2)/2,140-(point_y1+point_y2)/2,new Color(220,220,0,250),215,140,new Color(250,250,0,100));
+        g2.setPaint(gp2);
         g2.fill(polygon_second);
       }else{
         g.setColor(new Color(255,255,255));
@@ -126,14 +140,16 @@ public class RaderChart extends Applet {
         }
         int[] xpoints = {215+point_x1,215+(int)(-(percent[0]*Math.cos(90*Math.PI/180+rad*0))),215};
         int[] ypoints = {140-point_y1,140-(int)(percent[0]*Math.sin(90*Math.PI/180+rad*0)),140};
-        int[] xpoints_second = {215+point_x1_second,215+(int)(-(percent[0]*Math.cos(90*Math.PI/180+rad*0))),215};
-        int[] ypoints_second = {140-point_y1_second,140-(int)(percent[0]*Math.sin(90*Math.PI/180+rad*0)),140};
+        int[] xpoints_second = {215+point_x1_second,215+(int)(-(percent_second[0]*Math.cos(90*Math.PI/180+rad*0))),215};
+        int[] ypoints_second = {140-point_y1_second,140-(int)(percent_second[0]*Math.sin(90*Math.PI/180+rad*0)),140};
         int npoints = xpoints.length;
         Polygon polygon = new Polygon(xpoints, ypoints, npoints);
         Polygon polygon_second = new Polygon(xpoints_second, ypoints_second, npoints);
-        g.setColor(new Color(214,0,0,100));
+        GradientPaint gp = new GradientPaint(215+(point_x1+(int)(-(percent_second[0]*Math.cos(90*Math.PI/180+rad*0))))/2,140-(point_y1+(int)(percent[0]*Math.sin(90*Math.PI/180+rad*0)))/2,new Color(0,120,0,220),215,140,new Color(220,220,0,200));
+        g2.setPaint(gp);
         g2.fill(polygon);
-        g.setColor(new Color(250,150,65,100));
+        GradientPaint gp2 = new GradientPaint(215+(point_x1+(int)(-(percent_second[0]*Math.cos(90*Math.PI/180+rad*0))))/2,140-(point_y1+(int)(percent[0]*Math.sin(90*Math.PI/180+rad*0)))/2,new Color(220,220,0,250),215,140,new Color(250,250,0,100));
+        g2.setPaint(gp2);
         g2.fill(polygon_second);
       }
     }
